@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const { customer, loan } = require("./api");
+const { NODE_ENV } = require("../config");
 
 module.exports = (app) => {
   app.use(express.json({ limit: "1mb" }));
@@ -12,7 +13,7 @@ module.exports = (app) => {
   loan(app);
 
   // Serve frontend
-  if (process.env.NODE_ENV === "production") {
+  if (NODE_ENV === "production") {
     app.use(express.static(path.join(__dirname, "../frontend/build")));
 
     app.get("*", (req, res) =>
