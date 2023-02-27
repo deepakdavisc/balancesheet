@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
 const { customer, loan } = require("./api");
-const { NODE_ENV } = require("../config");
+const { NODE_ENV } = require("./config");
 
 module.exports = (app) => {
   app.use(express.json({ limit: "1mb" }));
